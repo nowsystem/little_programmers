@@ -1,49 +1,74 @@
-// Funciones matemáticas
-function realizarOperaciones() {
-    const num1 = parseFloat(document.getElementById('numero1').value);
-    const num2 = parseFloat(document.getElementById('numero2').value);
-    
-    const resultados = document.getElementById('resultados-matematicos');
-    resultados.innerHTML = `
-        <div class="resultado">Suma: ${num1 + num2}</div>
-        <div class="resultado">Resta: ${num1 - num2}</div>
-        <div class="resultado">Multiplicación: ${num1 * num2}</div>
-        <div class="resultado">División: ${(num2 !== 0 ? num1 / num2 : 'Error')}</div>
-    `;
-}
+// Animación de la imagen central
+const image = document.getElementById('mainImage');
+let animationPaused = false;
 
-function manipularCadena() {
-    const texto = document.getElementById('texto').value;
-    
-    // Eliminar espacios en blanco y contar caracteres válidos
-    const textoLimpio = texto.replace(/ /g, '');
-    const palabras = texto.split(' ').filter(word => word !== '');
-    
-    const resultados = document.getElementById('resultados-cadenas');
-    resultados.innerHTML = `
-        <div class="resultado">Mayúsculas: ${texto.toUpperCase()}</div>
-        <div class="resultado">Longitud (sin espacios): ${textoLimpio.length}</div>
-        <div class="resultado">Invertido: ${texto.split('').reverse().join('')}</div>
-        <div class="resultado">Palabras: ${palabras.length}</div>
-    `;
-}
-
-// Quiz interactivo
-function verificarRespuesta(respuestaUsuario) {
-    const respuestaCorrecta = true;
-    const resultadoQuiz = document.getElementById('resultado-quiz');
-    
-    if(respuestaUsuario === respuestaCorrecta) {
-        resultadoQuiz.textContent = "✅ ¡Correcto! JavaScript es un lenguaje de programación";
-        resultadoQuiz.style.color = "green";
-    } else {
-        resultadoQuiz.textContent = "❌ Incorrecto, JavaScript es un lenguaje de programación";
-        resultadoQuiz.style.color = "red";
+image.addEventListener('mouseover', () => {
+    if(!animationPaused) {
+        image.style.animationPlayState = 'paused';
     }
-}
+});
 
-// Modo oscuro opcional
-const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-    // Aquí podrías agregar más lógica para cambiar colores
-}
+image.addEventListener('mouseout', () => {
+    if(!animationPaused) {
+        image.style.animationPlayState = 'running';
+    }
+});
+
+image.addEventListener('click', () => {
+    image.style.transform = 'scale(1.15) rotate(5deg)';
+    setTimeout(() => {
+        image.style.transform = 'scale(1) rotate(0deg)';
+    }, 500);
+    
+    // Efecto de partículas
+    const particles = document.createElement('div');
+    particles.style.position = 'absolute';
+    particles.style.width = '10px';
+    particles.style.height = '10px';
+    particles.style.background = 'radial-gradient(circle, var(--secondary-color), transparent)';
+    particles.style.borderRadius = '50%';
+    particles.style.animation = 'particle 1s ease-out';
+    
+    const rect = image.getBoundingClientRect();
+    particles.style.left = `${rect.left + rect.width/2}px`;
+    particles.style.top = `${rect.top + rect.height/2}px`;
+    
+    document.body.appendChild(particles);
+    
+    setTimeout(() => {
+        particles.remove();
+    }, 1000);
+    
+    animationPaused = !animationPaused;
+    image.style.animationPlayState = animationPaused ? 'paused' : 'running';
+});
+
+// Funcionalidad del visor de PDF
+const modal = document.getElementById('pdfModal');
+const pdfViewer = document.getElementById('pdfViewer');
+const closeBtn = document.querySelector('.close-btn');
+
+document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const pdfPath = btn.getAttribute('data-pdf');
+        pdfViewer.src = pdfPath;
+        modal.style.display = 'block';
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    pdfViewer.src = '';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+        pdfViewer.src = '';
+    }
+});
+
+window.addEventListener('load', () => {
+    image.style.opacity = '1';
+    image.style.transform = 'translateY(0)';
+});

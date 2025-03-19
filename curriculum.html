@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenidos a LITTLE PROGRAMMERS</title>
+    <title>Currículo LITTLE PROGRAMMERS</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,11 +16,10 @@
                 <a href="index.html">Inicio</a>
                 <a href="nosotros.html">Nuestro Equipo</a>
                 <a href="descarga.html">Manual</a>
-                <a href="curriculum.html">Curriculum</a>
+                <a href="curriculum.html">Currículo</a>
                 <a href="contacto.html">Contactos</a>
             </nav>
         </div>
-       
     </header>
 
     <main>
@@ -32,25 +31,10 @@
                      id="mainImage">
             </div>
             <h1>LITTLE PROGRAMMERS 🚀</h1>
-            
-            <h1>Objetivo</h1> 
-<h2>Desarrollar sistemas informáticos con lenguajes de programación y base de datos, aplicando 
-diferentes metodologías según los requerimientos de funcionalidad.</h2>
-
-<h1>Misión</h1>
-<h2>En little programmers nuestra misión es ofrecer un espacio de aprendizaje accesible y 
-amigable para aquellos que están comenzando su camino en la programación y bases de datos. 
-A través de contenidos y recursos fáciles de entender, buscamos fortalecer los conocimientos fundamentales y
- ayudar a los estudiantes a desarrollar las habilidades necesarias para avanzar en el mundo de la tecnología.</h2>
- <h1>Visión </h1>
-<h2>Convertirnos en un punto de apoyo para estudiantes que inician su formación en programación y 
-bases de datos, proporcionando un entorno donde puedan crecer, aprender de manera práctica y 
-sentirse motivados para seguir desarrollándose en el campo tecnológico con confianza.</h2>
-
         </section>
 
         <section class="downloads-section">
-            <h1>📥 Descargas Útiles</h1>
+            <h1>📥Manuales</h1>
             
             <div class="downloads-grid">
                 <!-- Item 1 -->
@@ -58,77 +42,84 @@ sentirse motivados para seguir desarrollándose en el campo tecnológico con con
                     <div class="download-header">
                         <ion-icon name="document-text-outline" class="download-icon"></ion-icon>
                         <div class="file-info">
-                            <h3>Programacion y Base de Datos</h3>
+                            <h3>Primero de Bachillerato</h3>
                             <p class="file-details">PDF • 2.5 MB</p>
                         </div>
                     </div>
-                    <p class="file-description">Aprende los fundamentos de la programación con ejemplos prácticos.</p>
-                    <a href="downloads/programacion.pdf" class="download-btn" download>
-                        <ion-icon name="download-outline"></ion-icon>
-                        Descargar
-                    </a>
+                    <p class="file-description"></p>
+                    <div class="button-container">
+                        <button class="view-btn" data-pdf="downloads/primero.pdf">
+                            <ion-icon name="eye-outline"></ion-icon>
+                            Visualizar
+                        </button>
+                        <a href="downloads/primero.pdf" class="download-btn" download>
+                            <ion-icon name="download-outline"></ion-icon>
+                            Descargar
+                        </a>
+                    </div>
                 </div>
 
+                <!-- Item 2 -->
+                <div class="download-card">
+                    <div class="download-header">
+                        <ion-icon name="document-text-outline" class="download-icon"></ion-icon>
+                        <div class="file-info">
+                            <h3>Segundo de Bachillerato</h3>
+                            <p class="file-details">PDF • 3.1 MB</p>
+                        </div>
+                    </div>
+                    <p class="file-description"></p>
+                    <div class="button-container">
+                        <button class="view-btn" data-pdf="downloads/segundo.pdf">
+                            <ion-icon name="eye-outline"></ion-icon>
+                            Visualizar
+                        </button>
+                        <a href="downloads/segundo.pdf" class="download-btn" download>
+                            <ion-icon name="download-outline"></ion-icon>
+                            Descargar
+                        </a>
+                    </div>
+                </div>
 
-               
+                <!-- Item 3 -->
+                <div class="download-card">
+                    <div class="download-header">
+                        <ion-icon name="document-text-outline" class="download-icon"></ion-icon>
+                        <div class="file-info">
+                            <h3>Tercero de Bachillerato</h3>
+                            <p class="file-details">PDF • 2.8 MB</p>
+                        </div>
+                    </div>
+                    <p class="file-description"></p>
+                    <div class="button-container">
+                        <button class="view-btn" data-pdf="downloads/tercero.pdf">
+                            <ion-icon name="eye-outline"></ion-icon>
+                            Visualizar
+                        </button>
+                        <a href="downloads/tercero.pdf" class="download-btn" download>
+                            <ion-icon name="download-outline"></ion-icon>
+                            Descargar
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- Modal para visualización de PDF -->
+        <div id="pdfModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <iframe id="pdfViewer" frameborder="0"></iframe>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>CopyRight 2025 Ecuador- Baños. Unidad Eduactiva "Baños"</p>
+        <p>CopyRight 2025 Ecuador - Baños. Unidad Educativa "Baños"</p>
     </footer>
 
-    <script>
-        // Animación de la imagen central
-        const image = document.getElementById('mainImage');
-        let animationPaused = false;
-
-        image.addEventListener('mouseover', () => {
-            if(!animationPaused) {
-                image.style.animationPlayState = 'paused';
-            }
-        });
-
-        image.addEventListener('mouseout', () => {
-            if(!animationPaused) {
-                image.style.animationPlayState = 'running';
-            }
-        });
-
-        image.addEventListener('click', () => {
-            image.style.transform = 'scale(1.15) rotate(5deg)';
-            setTimeout(() => {
-                image.style.transform = 'scale(1) rotate(0deg)';
-            }, 500);
-            
-            // Efecto de partículas
-            const particles = document.createElement('div');
-            particles.style.position = 'absolute';
-            particles.style.width = '10px';
-            particles.style.height = '10px';
-            particles.style.background = 'radial-gradient(circle, var(--secondary-color), transparent)';
-            particles.style.borderRadius = '50%';
-            particles.style.animation = 'particle 1s ease-out';
-            
-            const rect = image.getBoundingClientRect();
-            particles.style.left = `${rect.left + rect.width/2}px`;
-            particles.style.top = `${rect.top + rect.height/2}px`;
-            
-            document.body.appendChild(particles);
-            
-            setTimeout(() => {
-                particles.remove();
-            }, 1000);
-            
-            animationPaused = !animationPaused;
-            image.style.animationPlayState = animationPaused ? 'paused' : 'running';
-        });
-
-        window.addEventListener('load', () => {
-            image.style.opacity = '1';
-            image.style.transform = 'translateY(0)';
-        });
-    </script>
+    <script src="scripts.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
